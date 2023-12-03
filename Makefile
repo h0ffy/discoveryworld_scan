@@ -6,23 +6,25 @@
 # 	extra/libbsd
 #
 
-CFLAGS = -v `mysql_config --cflags` --prefix=/opt --std=c++11
-LDFLAGS = -v -g -stdlib=libc++ -O2 -Werror -loping -lpthread -lpcap -ltinyxml2 -lmbedtls -lc++ -lnet -lconfig -lGeoIP -lcrypto -lbsd -lssh -lc++abi -lm -lc -lgcc_s -lgcc 
+CFLAGS = -v --prefix=/opt --std=c++11 -I/usr/local/include 
+LDFLAGS = -v -g -lstdc++ -stdlib=libc++ -O2 -Werror -loping -lpthread -lpcap -ltinyxml2 -lmbedtls -lc++ -lnet -lconfig -lGeoIP -lcrypto -lbsd -lssh -lc++abi -lm -lc -lgcc_s -lgcc 
+
+#-stdlib=libc++
 
 nop = "--enable-stackguard-randomization --enable-obsolete-rpc --prefix=/opt --enable-sanity-checks --enable-recursive-check"
 
-OBJ_MAIN = obj/main.o obj/misc.o obj/output.o obj/input.o obj/discovery.o obj/config.o obj/threads.o obj/db.o obj/portscan.o obj/net_utils.o obj/services.o obj/netstatus.o obj/watchdog.o
-OBJ_TEST = obj/test.o obj/misc.o obj/output.o obj/input.o obj/discovery.o obj/config.o obj/threads.o obj/db.o obj/portscan.o obj/net_utils.o obj/services.o obj/netstatus.o obj/watchdog.o
+OBJ_MAIN = obj/main.o obj/misc.o obj/output.o obj/input.o obj/discovery.o obj/config.o obj/threads.o obj/portscan.o obj/net_utils.o obj/services.o obj/netstatus.o obj/watchdog.o
+OBJ_TEST = obj/test.o obj/misc.o obj/output.o obj/input.o obj/discovery.o obj/config.o obj/threads.o obj/portscan.o obj/net_utils.o obj/services.o obj/netstatus.o obj/watchdog.o
 OBJ_MODULES = obj/modules/module_agent.o obj/modules/module_ssh.o obj/modules/protocol_whois.o 
 #OBJ_MODULES += obj/modules/module_detector.o 
 OBJ_CONTRIB = obj/contrib/slre.o
 OBJ = $(OBJ_MAIN) $(OBJ_MODULES) $(OBJ_CONTRIB)
 OBJT = $(OBJ_TEST) $(OBJ_MODULES) $(OBJ_CONTRIB)
 INCLUDE = src/
-EXE = bin/discoveryd
+EXE = bin/discovery_scan
 TEST = bin/test
 CONF_FILE = etc/discoveryworld.conf
-CC = clang++-9
+CC = g++
 INSTALLDIR = /opt/discoveryworld/bin
 CONFIGDIR = /opt/discoveryworld/etc
 LOGDIR = /var/log/discoveryworld
@@ -54,8 +56,8 @@ obj/config.o: src/config.cpp
 obj/threads.o:	src/threads.cpp
 	$(CC) -c $(CFLAGS) -o $@ -I$(INCLUDE) $<
 
-obj/db.o:	src/db.cpp
-	$(CC) -c $(CFLAGS) -o $@ -I$(INCLUDE) $<
+#obj/db.o:	src/db.cpp
+#	$(CC) -c $(CFLAGS) -o $@ -I$(INCLUDE) $<
 
 obj/misc.o:	src/misc.cpp
 	$(CC) -c $(CFLAGS) -o $@ -I$(INCLUDE) $<

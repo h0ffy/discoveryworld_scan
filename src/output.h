@@ -5,7 +5,7 @@
 #define MAX_NODES 15
 #define MAX_OUTPUT_FINGER 82500
  
-#include "db.h"
+//#include "db.h"
 class output {
 	private:
 		char *path;
@@ -13,7 +13,7 @@ class output {
 		int next_node;
 		int output_method;
 		struct st_output_node *nodes[12];
-		db *database;
+		//db *database;
 	public:	
 		
 		output(void);

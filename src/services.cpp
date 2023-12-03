@@ -12,10 +12,10 @@
 
 static struct st_service srv[MAX_SERVICES] = { 
   SERVICE_REFERRAL(0, "HTTP", &services::chk_http),
-  SERVICE_REFERRAL(1, "HTTPS", &services::chk_https),
+  SERVICE_REFERRAL(1, "HTTPS", &services::chk_http),
   /*{2, "FTP", &services::chk_https},
   {3, "TELNET", &services::chk_https},*/
-  SERVICE_REFERRAL(4, "SSH", &services::chk_https),
+  SERVICE_REFERRAL(4, "SSH", &services::chk_http),
   //{5, "SMTP", &services::chk_https},
   {0, NULL, NULL},
 };
@@ -48,3 +48,8 @@ const char *services::getServiceByID(int id) {
     
     return(srv[id].name);
 }
+
+void services::chk_http(const char *ip, st_output_node *node) {
+	__asm("nop");
+}
+

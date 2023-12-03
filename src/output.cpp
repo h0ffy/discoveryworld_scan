@@ -11,7 +11,6 @@
 #include <bsd/string.h>
 #include <pthread.h>
 #include "config.h"
-//#include "db.h" (added in output.h to this->database)
 #include "config.h"
 #include "output.h"
 
@@ -22,7 +21,7 @@ output::output()
 	int i=0;
 	this->last_node=this->next_node=0;
 	this->output_method=METHOD_MYSQL;
-	this->database = new db();
+	//this->database = new db();
 	
 	try {
 		for(i=0;i<=255;i++) {
@@ -149,8 +148,8 @@ int output::build(void) {
 
 		while(node_list[i].status==1) {
 			//DEBUG 
-			this->database->addScan(node_list[i].tid, node_list[i].port, node_list[i].proto,
-						node_list[i].service, node_list[i].finger,node_list[i].cert);
+			//this->database->addScan(node_list[i].tid, node_list[i].port, node_list[i].proto,
+			//			node_list[i].service, node_list[i].finger,node_list[i].cert);
 			
 			bzero(node_list[this->last_node].finger, MAX_OUTPUT_FINGER);
 			bzero(node_list[this->last_node].cert, 32000);
@@ -184,5 +183,6 @@ int output::build(void) {
  */
 unsigned long long output::target(const char *ip, const char *geo, int pingstat) {
     //if(config::get_outputmethod()==0)
-    return(this->database->addTarget(ip, geo,pingstat));
+//    return(this->database->addTarget(ip, geo,pingstat));
+	return(0);
 }

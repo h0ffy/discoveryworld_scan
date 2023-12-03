@@ -11,9 +11,6 @@
 #include "output.h"
 #include "netstatus.h"
 #include "discovery.h"
-/*#include "modules/module_ssl.h"
-#include "modules/protocol_http.h"
-#include "modules/module_https.h"*/
 #include "modules/module_agent.h"
 
 
@@ -113,10 +110,11 @@ int main(int argc, char *argv[]) {
 }
 
 void initialize(void) {
-	db *database = new db();
+	//db *database = new db();
 	try {	
 
-		database->test_db() ? __logging("DATABASE\t\t\t[OK]\n") : 	throw 0;
+		//database->test_db() ? __logging("DATABASE\t\t\t[OK]\n") : 	throw 0;
+		__logging("Initalize");
 
 	}
 	catch(int iResult) {

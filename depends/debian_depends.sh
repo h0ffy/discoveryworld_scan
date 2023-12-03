@@ -1,5 +1,5 @@
 #!/bin/bash
-apt-get install libssl-dev libconfig-dev liboping-dev libnet1-dev libpcap-dev libgeoip-dev libssh-dev default-libmysqlclient-dev build-essential automake autoconf libcurl4-openssl-dev liblld-9-dev binutils binutils-for-build lld libc++-9-dev libclang-dev clang-9 libmbedtls-dev libc++abi-9-dev   
+apt-get install -y libssl-dev libconfig-dev liboping-dev libnet1-dev libpcap-dev libgeoip-dev libssh-dev build-essential automake autoconf libcurl4-openssl-dev liblld-dev binutils binutils-for-build lld libc++-dev libclang-dev clang libmbedtls-dev libc++abi-dev libbsd-dev libconfig++-dev libnet1-dev libnet-cpp-dev libnet1 liboping-dev liboping0 libtinyxml-dev libtinyxml2-dev  
 #proposed
 	# libcsv-dev
 

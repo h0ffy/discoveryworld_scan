@@ -135,8 +135,8 @@ try {
 			
 			
 			//v0.2: change to service.cpp object poll control
-			http *lhttp 	= 	new http();
-			https *lhttps 	=	new https();
+			//http *lhttp 	= 	new http();
+			//https *lhttps 	=	new https();
 			ssh *sh 	= 	new ssh();
 			netutils *net 	= 	new netutils();
 			
@@ -155,15 +155,6 @@ try {
 					case 0:	//HTTP CASE	
 						//printf("OK HTTP OPEN PORT %s:%d\n", scan->ip,open_ports[c]);
 						__logging("OK HTTP OPEN PORT %s:%d\n", scan->ip,open_ports[c]);
-						if((http_len = lhttp->finger(scan->ip,open_ports[c]))) {
-							strlcpy(node.finger,(const char *)lhttp->reply,MAX_OUTPUT_FINGER);
-							strlcpy(node.cert,(const char *)ANY, 4);
-							strlcpy(node.service,(const char *)"HTTP",5);
-							node.proto=0;
-							node.status=1;
-							discovery_status=true;
-						}
-						
 						//ag->send_resolve(scan->ip); 
 						ag->send_web(scan->ip,open_ports[c],(char *)"HTTP");
 					
@@ -171,24 +162,10 @@ try {
 					case 1:
 						//printf("OK HTTPS OPEN PORT %s:%d\n", scan->ip,open_ports[c]);
 						__logging("OK HTTPS OPEN PORT %s:%d\n", scan->ip,open_ports[c]);
-						while(threads::httpsfinger_getmutex()==1) {
-							sleep(0.1);
-						}
-						threads::httpsfinger_setmutex(1);
-                            			//tmp_https = https_finger(scan->ip, open_ports[c]);
-						lhttps->finger(scan->ip,open_ports[c]);
-                        			threads::httpsfinger_setmutex(0);
 						
-						if(lhttps->reply_count==0 || lhttps->reply==NULL)
-						  break;
-						
-						strlcpy(node.finger,(const char *)lhttps->reply,MAX_OUTPUT_FINGER);
-						strlcpy(node.cert,(const char *)ANY, 4);
-						strlcpy(node.service,(const char *)"HTTPS",6);
 						node.proto=0;
 						node.status=1;
 						discovery_status=true;
-						free(tmp_https);
 						ag->send_web(scan->ip,open_ports[c],(char *)"HTTPS");
 						break;
 					
@@ -255,8 +232,6 @@ try {
 				out->build();
 		
 			
-			delete lhttp;
-			delete lhttps;
 			delete net;
 			delete sh;
 			delete ag;
