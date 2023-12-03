@@ -24,7 +24,7 @@ INCLUDE = src/
 EXE = bin/discovery_scan
 TEST = bin/test
 CONF_FILE = etc/discoveryworld.conf
-CC = g++
+CC = clang++
 INSTALLDIR = /opt/discoveryworld/bin
 CONFIGDIR = /opt/discoveryworld/etc
 LOGDIR = /var/log/discoveryworld
@@ -104,7 +104,7 @@ $(EXE): $(OBJ)
 
 clean:
 	rm $(OBJ)
-
+	rm $(EXE)
 
 clean-all:
 	rm $(OBJ) $(EXE)
