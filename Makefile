@@ -7,7 +7,7 @@
 #
 
 CFLAGS = -v `mysql_config --cflags` --prefix=/opt --std=c++11
-LDFLAGS = -v -g -stdlib=libc++ -O2 -Werror -loping -lpthread -lpcap -ltinyxml2 -lmbedtls -lc++ -lnet -lconfig -lGeoIP -lcrypto -lbsd -lssh `mysql_config --libs` -lc++abi -lm -lc -lgcc_s -lgcc 
+LDFLAGS = -v -g -stdlib=libc++ -O2 -Werror -loping -lpthread -lpcap -ltinyxml2 -lmbedtls -lc++ -lnet -lconfig -lGeoIP -lcrypto -lbsd -lssh -lc++abi -lm -lc -lgcc_s -lgcc 
 
 nop = "--enable-stackguard-randomization --enable-obsolete-rpc --prefix=/opt --enable-sanity-checks --enable-recursive-check"
 
