@@ -6,6 +6,7 @@
 #include <bsd/bsd.h>
 #include <bsd/stdio.h>
 #include <bsd/stdlib.h>
+#include <zmq.h>
 #include "misc.h"
 #include "net_utils.h"
 #include "config.h"

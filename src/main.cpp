@@ -2,6 +2,7 @@
 #include <bsd/stdio.h>
 #include <bsd/stdlib.h>
 #include <bsd/libutil.h>
+#include <zmq.h>
 //#include <unistd.h>
 #include "input.h"
 #include "config.h"

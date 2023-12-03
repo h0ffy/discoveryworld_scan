@@ -10,6 +10,7 @@
 #include <bsd/stdlib.h>
 #include <bsd/string.h>
 #include <pthread.h>
+#include <zmq.h>
 #include "config.h"
 #include "config.h"
 #include "output.h"

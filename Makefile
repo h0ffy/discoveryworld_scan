@@ -7,7 +7,7 @@
 #
 
 CFLAGS = -v --prefix=/opt --std=c++11 -I/usr/local/include 
-LDFLAGS = -v -g -lstdc++ -stdlib=libc++ -O2 -Werror -loping -lpthread -lpcap -ltinyxml2 -lmbedtls -lc++ -lnet -lconfig -lGeoIP -lcrypto -lbsd -lssh -lc++abi -lm -lc -lgcc_s -lgcc 
+LDFLAGS = -v -g -lstdc++ -stdlib=libc++ -O2 -Werror -loping -lpthread -lpcap -ltinyxml2 -lmbedtls -lc++ -lnet -lconfig -lGeoIP -lcrypto -lbsd -lssh -lc++abi -lm -lc -lgcc_s -lgcc -lzmq 
 
 #-stdlib=libc++
 
@@ -109,6 +109,13 @@ clean:
 clean-all:
 	rm $(OBJ) $(EXE)
 
+requeriments:
+	clear
+	sudo depends/debian_depends.sh
+
+depend:
+	clear
+	sudo depends/debian_depends.sh
 
 install:
 	install -d $(INSTALLDIR)
@@ -123,4 +130,8 @@ uninstall:
 	rm -rf $(LOGDIR)
 	rm -rf $(CONFIGDIR)
 
+cleared:
+	clear
 
+all: cleared
+	@echo "DiscoveryWorld Scanner is compile!"
