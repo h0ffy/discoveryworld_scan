@@ -19,7 +19,6 @@ Application to internet machines discovery and analysis
 		* 	Multiport scan and figer
 		* 	Multiservice (SSH)
 		*	Geo IP location
-		*	Savee data into MySQL database
 		*	Comunication with agent
 		*	Configuration file 
 		*	Save scan state with resume possiblity
@@ -36,7 +35,6 @@ Application to internet machines discovery and analysis
 		*	IPV6 (not disclosured) 
 		*	Geo IP location city and ISP infomation
 		*	Adquisition IPV6 (not disclosured)
-		*	Adquisition method MySQL and socket
 		*	Most tcp scan methods
 		*	Most service finger methods (not disclosured all)
 		*	Automatic protocol detection (not disclosured)
